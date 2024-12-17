@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "BariatricAssistant",
+    "slug": "bariatric-assistant",
+    "version": "1.0.1",
+    "entryPoint": "./App.js",
+    "newArchEnabled": true,
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "hermesEnabled": true,
+      "bundleIdentifier": "com.marsversion.bariatricassistantapp"
+    },
+    "android": {
+      "hermesEnabled": true,
+      "package": "com.marsversion.bariatricassistantapp"
+    },
+    "sdkVersion": "52.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/your-project-id"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
