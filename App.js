@@ -11,7 +11,7 @@ import {
   Poppins_700Bold,
   Poppins_900Black,
 } from '@expo-google-fonts/poppins';
-import { SafeAreaProvider } from 'react-native-safe-area-context'; // Safe area provider
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import BAHome from './components/BAHome';
 import BAND from './components/BAND';
@@ -20,15 +20,14 @@ import BAOPVerfahren from './components/BAOPVerfahren';
 
 const Tab = createBottomTabNavigator();
 
-// Linking configuration for deep linking support
 const linking = {
   prefixes: ['com.marsversion.bariatricassistantapp://'],
   config: {
     screens: {
       Home: 'home',
       BMI: 'bmi',
-      Kontakt: 'kontakt',
-      OPVerfahren: 'opverfahren',
+      OP: 'op',
+      INFO: 'info',
     },
   },
 };
@@ -54,7 +53,6 @@ export default function App() {
         setAppIsReady(true);
       }
     }
-
     prepare();
   }, []);
 
@@ -72,41 +70,49 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer linking={linking} onReady={onLayoutRootView}>
         <Tab.Navigator
-          initialRouteName="BAHome"
+          initialRouteName="Home"
           screenOptions={{
-            tabBarActiveTintColor: 'rgb(175, 4, 4)',
+            tabBarActiveTintColor: '#7a0202',
             tabBarInactiveTintColor: 'black',
             tabBarShowLabel: true,
             tabBarStyle: {
               borderTopWidth: 0.5,
-              borderTopColor: 'rgb(175, 4, 4)', // Red border line for the tab bar
-              backgroundColor: 'white', // Ensure the background is purely white
-              height: 60, // Adjust height for tab bar size
-              paddingTop: 10, // Add padding top to position items higher
-              paddingBottom: 10, // Adjust padding bottom to make space for items
-              marginBottom: 30, // Positive margin to move the tab bar higher
-              elevation: 0, // Remove shadow on Android
-              shadowOpacity: 0, // Remove shadow on iOS
+              borderTopColor: '#7a0202',
+              backgroundColor: 'white',
+              height: 60,
+              paddingTop: 10,
+              paddingBottom: 20,
+              marginBottom: 30,
+              elevation: 0,
+              shadowOpacity: 0,
             },
             tabBarLabelStyle: {
               fontSize: 15,
               fontWeight: 'bold',
             },
-            tabBarIcon: () => null, // No icons
+            tabBarIcon: () => null,
           }}
         >
           <Tab.Screen
-            name="Home"
+            name="HOME"
             component={BAHome}
-            options={{ tabBarLabel: 'HOME', headerShown: false }}
+            options={{ headerShown: false }}
           />
-          <Tab.Screen name="BMI" component={BAND} options={{ tabBarLabel: 'BMI', headerShown: false }} />
           <Tab.Screen 
-    name="OPVerfahren" 
-    component={BAOPVerfahren} 
-    options={{ tabBarLabel: 'OP', headerShown: false }} 
-  />
-          <Tab.Screen name="Kontakt" component={BAKontakt} options={{ tabBarLabel: 'INFO', headerShown: false }} />
+            name="BMI" 
+            component={BAND} 
+            options={{ headerShown: false }}
+          />
+          <Tab.Screen 
+            name="OP-Skizze" 
+            component={BAOPVerfahren} 
+            options={{ headerShown: false }}
+          />
+          <Tab.Screen 
+            name="INFO" 
+            component={BAKontakt} 
+            options={{ headerShown: false }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
